@@ -19,7 +19,7 @@ To install LuaJIT do this: `haxelib install linc_luajit` on a Command prompt/Pow
 
 ## Attractive animated dialogue boxes:
 
-![](https://user-images.githubusercontent.com/44785097/127706669-71cd5cdb-5c2a-4ecc-871b-98a276ae8070.gif)
+![]
 
 
 ## Mod Support
