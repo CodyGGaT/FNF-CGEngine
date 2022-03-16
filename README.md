@@ -1,4 +1,4 @@
-# Friday Night Funkin' - Psych Engine
+# Friday Night Funkin' - CG Engine
 Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
 ## Installation:
@@ -11,17 +11,9 @@ To install LuaJIT do this: `haxelib install linc_luajit` on a Command prompt/Pow
 ...Or if you don't want your mod to be able to run .lua scripts, delete the "LUA_ALLOWED" line on Project.xml
 
 ## Credits:
-* Shadow Mario - Coding
-* RiverOaken - Arts and Animations
-* bbpanzu - Assistant Coding
+* CGGaT - Coding
+* MoniRebooted - Assistant Coding
 
-### Special Thanks
-* shubs - New Input System
-* SqirraRNG - Chart Editor's Sound Waveform base code
-* iFlicky - Delay/Combo Menu Song Composer + Dialogue Sounds
-* PolybiusProxy - .MP4 Loader Extension
-* Keoiki - Note Splash Animations
-_____________________________________
 
 # Features
 
@@ -46,6 +38,7 @@ _____________________________________
 ### Week 3:
   * BF does "Hey!" during Philly Nice
   * Blammed has a cool new colors flash during that sick part of the song
+  * In a future update bullet notes In Blammed
 ### Week 4:
   * Better hair physics for Mom/Boyfriend (Maybe even slightly better than Week 7's :eyes:)
   * Henchmen die during all songs. Yeah :(
@@ -57,8 +50,8 @@ _____________________________________
   * Also there's the Background girls being spooky during the "Hey!" parts of the Instrumental
 
 ## Cool new Chart Editor changes and countless bug fixes
-![](https://github.com/ShadowMario/FNF-PsychEngine/blob/main/docs/img/chart.png?raw=true)
-* You can now chart "Event" notes, which are bookmarks that trigger specific actions that usually were hardcoded on the vanilla version of the game.
+![](https://github.com/ShadowMario/FNF-CGEngine/blob/main/docs/img/chart.png?raw=true)
+* You can chart "Event" notes, which are bookmarks that trigger specific actions that usually were hardcoded on the vanilla version of the game.
 * Your song's BPM can now have decimal values
 * You can manually adjust a Note's strum time if you're really going for milisecond precision
 * You can change a note's type on the Editor, it comes with two example types:
@@ -83,7 +76,7 @@ _____________________________________
 
 ## Options menu:
 * You can change Note colors, Delay and Combo Offset, Controls and Preferences there.
- * On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate, Low Quality, Note Splashes, Flashing Lights, etc.
+ * On Preferences you can toggle Downscroll, Middlescroll, Anti-Aliasing, Framerate, Low Quality, Note Splashes, Flashing Lights, Winning Icons in a later update, etc.
 
 ## Other gameplay features:
 * When the enemy hits a note, their strum note also glows.
