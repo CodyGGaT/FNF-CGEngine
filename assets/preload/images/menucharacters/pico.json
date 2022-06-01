@@ -1,11 +1,10 @@
 {
-	"idle_anim": "Pico Idle Dance",
-	"confirm_anim": "M Dad Idle",
+	"idle_anim": "M Pico Idle",
+	"image": "Menu_Pico",
 	"position": [
-		195,
-		20
+		0,
+		-120
 	],
-	"scale": 0.7,
-	"flipX": true,
-	"image": "Menu_Pico"
+	"scale": 1,
+	"confirm_anim": "M Dad Idle"
 }

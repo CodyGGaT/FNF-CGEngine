@@ -26,7 +26,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.2'; //This is also used for DiscÑord RPC
+	public static var psychEngineVersion:String = '0.2.1'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -165,11 +165,13 @@ class MainMenuState extends MusicBeatState
 			add(char);
 
             case 2:
-			char = new FlxSprite(790, 200).loadGraphic(Paths.image('mainmenu/bf-menu.png'));
-			char.frames = Paths.getSparrowAtlas('mainmenu/bf-menu.png');
-			char.animation.addByPrefix('idleB', 'bf-menu idle', 24, true);
-			char.animation.play('idleB');
+			char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/bf-menu'));//put your cords and image here
+			char.frames = Paths.getSparrowAtlas('mainmenu/bf-menu');//here put the name of the xml
+			char.animation.addByPrefix('idleR', 'bf-menu idle', 24, true);//on 'idle normal' change it to your xml one
+			char.animation.play('idleR');//you can rename the anim however you want to
 			char.scrollFactor.set();
+			FlxG.sound.play(Paths.sound('appear'), 2);
+			char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			add(char);
               
