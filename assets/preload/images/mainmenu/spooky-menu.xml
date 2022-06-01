@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="spooky-menu.png"><SubTexture name="spooky-menu idle0000" x="0" y="0" width="381" height="549" frameX="-50" frameY="0" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0001" x="0" y="0" width="381" height="549" frameX="-50" frameY="0" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0002" x="381" y="0" width="379" height="541" frameX="-55" frameY="-8" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0003" x="381" y="0" width="379" height="541" frameX="-55" frameY="-8" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0004" x="835" y="549" width="357" height="484" frameX="-79" frameY="-61" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0005" x="835" y="549" width="357" height="484" frameX="-79" frameY="-61" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0006" x="481" y="549" width="354" height="494" frameX="-78" frameY="-52" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0007" x="481" y="549" width="354" height="494" frameX="-78" frameY="-52" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0008" x="760" y="0" width="492" height="532" frameX="0" frameY="-16" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0009" x="760" y="0" width="492" height="532" frameX="0" frameY="-16" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0010" x="0" y="549" width="481" height="524" frameX="-7" frameY="-20" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0011" x="0" y="549" width="481" height="524" frameX="-7" frameY="-20" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0012" x="835" y="549" width="357" height="484" frameX="-79" frameY="-61" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0013" x="835" y="549" width="357" height="484" frameX="-79" frameY="-61" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0014" x="481" y="549" width="354" height="494" frameX="-78" frameY="-52" frameWidth="492" frameHeight="549" />
+<SubTexture name="spooky-menu idle0015" x="481" y="549" width="354" height="494" frameX="-78" frameY="-52" frameWidth="492" frameHeight="549" />
+</TextureAtlas>

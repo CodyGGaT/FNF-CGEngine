@@ -1,0 +1,10 @@
+{
+	"idle_anim": "monster idle",
+	"image": "Menu_Monster",
+	"position": [
+		120,
+		180
+	],
+	"scale": 0.55,
+	"confirm_anim": "M Dad Idle"
+}

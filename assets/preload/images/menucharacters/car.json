@@ -1,0 +1,10 @@
+{
+	"confirm_anim": "M Dad Idle",
+	"idle_anim": "GF Dancing Beat Hair blowing",
+	"position": [
+		121,
+		140
+	],
+	"scale": 0.55,
+	"image": "Menu_Car"
+}

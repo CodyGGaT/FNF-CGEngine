@@ -1,0 +1,11 @@
+{
+	"idle_anim": "BF IDLE instance",
+	"image": "BFPixel",
+	"position": [
+		-130,
+		-130
+	],
+	"flipX": false,
+	"scale": 5.54999999999999,
+	"confirm_anim": "BfPixel hey"
+}

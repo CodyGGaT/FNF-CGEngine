@@ -6,6 +6,7 @@ import Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.FlxCamera;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
@@ -25,7 +26,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.1'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.2'; //This is also used for DiscÑord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -38,21 +39,24 @@ class MainMenuState extends MusicBeatState
 		#if MODS_ALLOWED 'mods', #end
 		#if ACHIEVEMENTS_ALLOWED 'awards', #end
 		'credits',
+		//#if !switch 'donate', #end
 		'options'
 	];
 
-	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
 	var debugKeys:Array<FlxKey>;
 
+	var char:FlxSprite;
+
 	override function create()
 	{
+		WeekData.loadTheFirstEnabledMod();
+
 		#if desktop
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
-
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
 		camGame = new FlxCamera();
@@ -77,21 +81,16 @@ class MainMenuState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 
+		var background:FlxSprite = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuBG'));
+		background.scrollFactor.set();
+		background.screenCenter();
+		background.antialiasing = ClientPrefs.globalAntialiasing;
+		add(background);
+
 		camFollow = new FlxObject(0, 0, 1, 1);
 		camFollowPos = new FlxObject(0, 0, 1, 1);
 		add(camFollow);
 		add(camFollowPos);
-
-		magenta = new FlxSprite(-80).loadGraphic(Paths.image('menuDesat'));
-		magenta.scrollFactor.set(0, yScroll);
-		magenta.setGraphicSize(Std.int(magenta.width * 1.175));
-		magenta.updateHitbox();
-		magenta.screenCenter();
-		magenta.visible = false;
-		magenta.antialiasing = ClientPrefs.globalAntialiasing;
-		magenta.color = 0xFFfd719b;
-		add(magenta);
-		// magenta.scrollFactor.set();
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
 		add(menuItems);
@@ -104,7 +103,7 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
+			var menuItem:FlxSprite = new FlxSprite(100, (i * 140)  + offset);
 			menuItem.scale.x = scale;
 			menuItem.scale.y = scale;
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
@@ -112,7 +111,7 @@ class MainMenuState extends MusicBeatState
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.x = 100;
+			//menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -151,6 +150,62 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		super.create();
+
+		switch (FlxG.random.int(1, 6))
+            {
+            case 1:
+			char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/pico-menu'));//put your cords and image here
+			char.frames = Paths.getSparrowAtlas('mainmenu/pico-menu');//here put the name of the xml
+			char.animation.addByPrefix('idleR', 'pico-menu idle', 24, true);//on 'idle normal' change it to your xml one
+			char.animation.play('idleR');//you can rename the anim however you want to
+			char.scrollFactor.set();
+			FlxG.sound.play(Paths.sound('appear'), 2);
+			char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			add(char);
+
+            case 2:
+			char = new FlxSprite(790, 200).loadGraphic(Paths.image('mainmenu/bf-menu.png'));
+			char.frames = Paths.getSparrowAtlas('mainmenu/bf-menu.png');
+			char.animation.addByPrefix('idleB', 'bf-menu idle', 24, true);
+			char.animation.play('idleB');
+			char.scrollFactor.set();
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			add(char);
+              
+			case 3:
+			char = new FlxSprite(810, 150).loadGraphic(Paths.image('mainmenu/dad-menu'));
+			char.frames = Paths.getSparrowAtlas('mainmenu/dad-menu');
+			char.animation.addByPrefix('idleS', 'dad-menu idle', 24, true);
+			char.animation.play('idleS');
+			char.scrollFactor.set();
+			char.flipX = true;
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			add(char);
+
+			case 4:
+			char = new FlxSprite(650, 160).loadGraphic(Paths.image('mainmenu/mom-menu'));
+			char.frames = Paths.getSparrowAtlas('mainmenu/mom-menu');
+			char.animation.addByPrefix('idleG', 'mom-menu idle', 24, true);
+			char.animation.play('idleG');
+			char.scrollFactor.set();
+			char.flipX = true;
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			FlxG.sound.play(Paths.sound('miaou'), 2);
+			add(char);
+		
+			case 5:
+			char = new FlxSprite(700, 130).loadGraphic(Paths.image('mainmenu/spooky-menu'));
+			char.frames = Paths.getSparrowAtlas('mainmenu/spooky-menu');
+			char.animation.addByPrefix('idleRD', 'spooky-menu idle', 24, true);
+			char.animation.play('idleRD');
+			char.scrollFactor.set();
+			char.flipX = true;
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			FlxG.sound.play(Paths.sound('SUS'), 2);
+			add(char);
+		}
+
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
@@ -201,12 +256,16 @@ class MainMenuState extends MusicBeatState
 				{
 					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
 				}
+				else if (optionShit[curSelected] == 'youtube')
+					{
+						CoolUtil.browserLoad('https://youtube.com');
+					}
 				else
 				{
 					selectedSomethin = true;
 					FlxG.sound.play(Paths.sound('confirmMenu'));
 
-					if(ClientPrefs.flashing) FlxFlicker.flicker(magenta, 1.1, 0.15, false);
+					if(ClientPrefs.flashing) FlxFlicker.flicker(char, 1.1, 0.15, false);
 
 					menuItems.forEach(function(spr:FlxSprite)
 					{
@@ -241,7 +300,7 @@ class MainMenuState extends MusicBeatState
 									case 'credits':
 										MusicBeatState.switchState(new CreditsState());
 									case 'options':
-										MusicBeatState.switchState(new options.OptionsState());
+										LoadingState.loadAndSwitchState(new options.OptionsState());
 								}
 							});
 						}
@@ -261,7 +320,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			
+			//spr.screenCenter(X);
 		});
 	}
 

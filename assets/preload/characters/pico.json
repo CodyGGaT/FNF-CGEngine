@@ -98,6 +98,17 @@
 			"anim": "singUPmiss",
 			"indices": [],
 			"name": "pico Up note miss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				200,
+				-70
+			],
+			"fps": 24,
+			"anim": "singDOWN-alt",
+			"indices": [],
+			"name": "Pico Shoot0"
 		}
 	],
 	"no_antialiasing": false,

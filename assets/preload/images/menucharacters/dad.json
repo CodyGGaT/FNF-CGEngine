@@ -1,11 +1,10 @@
 {
-	
-	"image": "Menu_Dad",
+	"confirm_anim": "M Dad Idle",
+	"idle_anim": "Dad idle dance",
 	"position": [
-		0,
-		0
+		138,
+		194
 	],
-	"scale": 1,
-	"idle_anim": "M Dad Idle",
-	"confirm_anim": "M Dad Idle"
+	"scale": 0.5,
+	"image": "Menu_Dad"
 }
