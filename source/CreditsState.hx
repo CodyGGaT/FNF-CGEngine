@@ -84,6 +84,7 @@ class CreditsState extends MusicBeatState
 			['CG Engine Team'],
 			['CGGaT',				'cggat',			'Main Programmer of CG Engine',								'',										'444444'],
 			['MoniRebooted',		'moni',				'Co-Programmer of CG Engine',								'',										'C30085'],
+			['GaMeRPrO',			'gamerpro',			'Beta Tester',												'',										'd35532'],
 			[''],
 			["Funkin' Crew"],
 			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",						'https://twitter.com/ninja_muffin99',	'F73838'],
