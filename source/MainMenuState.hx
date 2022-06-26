@@ -26,7 +26,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.2.2'; //This is also used for Discord RPC
+	public static var psychEngineVersion:String = '0.3'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -150,7 +150,7 @@ class MainMenuState extends MusicBeatState
 
 		super.create();
 
-		switch (FlxG.random.int(1, 5))
+		switch (FlxG.random.int(1, 6))
             {
             case 1:
 			char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/pico-menu'));//put your cords and image here
@@ -204,6 +204,17 @@ class MainMenuState extends MusicBeatState
 			char.flipX = true;
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			FlxG.sound.play(Paths.sound('SUS'), 2);
+			add(char);
+
+			case 6:
+			char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/tankman-menu'));
+			char.frames = Paths.getSparrowAtlas('mainmenu/tankman-menu');
+			char.animation.addByPrefix('idleR', 'idle', 24, true);
+			char.animation.play('idleR');
+			char.scrollFactor.set();
+			FlxG.sound.play(Paths.sound('appear'), 2);
+			char.flipX = false;
+			char.antialiasing = ClientPrefs.globalAntialiasing;
 			add(char);
 		}
 
