@@ -47,6 +47,22 @@ class VisualsUISubState extends BaseOptionsMenu
 			'bool',
 			false);
 		addOption(option);
+
+		var option:Option = new Option("Video Mode",
+			'If checked, hides entire HUD and enables botplay :D',
+			'videoMode',
+			'bool',
+			false);
+		addOption(option);
+		
+		var option:Option = new Option('Colorblind Filter',
+			'You can set colorblind filter (makes the game more playable for colorblind people)',
+			'colorblindMode',
+			'string',
+			'None', 
+			['None', 'Deuteranopia', 'Protanopia', 'Tritanopia']);
+		option.onChange = ColorblindFilters.applyFiltersOnGame;
+		addOption(option);
 		
 		var option:Option = new Option('Time Bar:',
 			"What should the Time Bar display?",
@@ -99,6 +115,14 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.onChange = onChangeFPSCounter;
 		#end
 		
+		var option:Option = new Option('Note Skin',
+			"What note skin do you prefer for playing?",
+			'noteSkinSettings',
+			'string',
+			'Classic',
+			['Classic', 'Circle']);
+		addOption(option);
+
 		var option:Option = new Option('Pause Screen Song:',
 			"What song do you prefer for the Pause Screen?",
 			'pauseMusic',

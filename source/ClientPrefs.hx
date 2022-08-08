@@ -25,12 +25,15 @@ class ClientPrefs {
 	public static var imagesPersist:Bool = false;
 	public static var ghostTapping:Bool = true;
 	public static var timeBarType:String = 'Time Left';
+	public static var colorblindMode:String = 'None';
 	public static var scoreZoom:Bool = true;
 	public static var noReset:Bool = false;
 	public static var healthBarAlpha:Float = 1;
 	public static var controllerMode:Bool = false;
 	public static var hitsoundVolume:Float = 0;
+	public static var noteSkinSettings:String = 'Classic';
 	public static var pauseMusic:String = 'Tea Time';
+	public static var videoMode:Bool = false;
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
@@ -104,6 +107,7 @@ class ClientPrefs {
 		//FlxG.save.data.cursing = cursing;
 		//FlxG.save.data.violence = violence;
 		FlxG.save.data.camZooms = camZooms;
+		FlxG.save.data.colorblindMode = colorblindMode;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.arrowHSV = arrowHSV;
@@ -118,6 +122,7 @@ class ClientPrefs {
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 
 		FlxG.save.data.ratingOffset = ratingOffset;
+		FlxG.save.data.videoMode = videoMode;
 		FlxG.save.data.sickWindow = sickWindow;
 		FlxG.save.data.goodWindow = goodWindow;
 		FlxG.save.data.badWindow = badWindow;
@@ -126,6 +131,7 @@ class ClientPrefs {
 		FlxG.save.data.controllerMode = controllerMode;
 		FlxG.save.data.hitsoundVolume = hitsoundVolume;
 		FlxG.save.data.pauseMusic = pauseMusic;
+		FlxG.save.data.noteSkinSettings = noteSkinSettings;
 	
 		FlxG.save.flush();
 
@@ -158,6 +164,9 @@ class ClientPrefs {
 		if(FlxG.save.data.globalAntialiasing != null) {
 			globalAntialiasing = FlxG.save.data.globalAntialiasing;
 		}
+		if(FlxG.save.data.colorblindMode != null) {
+			colorblindMode = FlxG.save.data.colorblindMode;
+		}
 		if(FlxG.save.data.noteSplashes != null) {
 			noteSplashes = FlxG.save.data.noteSplashes;
 		}
@@ -188,6 +197,9 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.noteOffset != null) {
 			noteOffset = FlxG.save.data.noteOffset;
+		}
+		if(FlxG.save.data.videoMode != null) {
+			videoMode = FlxG.save.data.videoMode;
 		}
 		if(FlxG.save.data.arrowHSV != null) {
 			arrowHSV = FlxG.save.data.arrowHSV;
@@ -235,6 +247,18 @@ class ClientPrefs {
 		if(FlxG.save.data.pauseMusic != null) {
 			pauseMusic = FlxG.save.data.pauseMusic;
 		}
+		if(FlxG.save.data.pauseMusic != null) {
+			noteSkinSettings = FlxG.save.data.noteSkinSettings;
+		}
+		if(FlxG.save.data.gameplaySettings != null)
+		{
+			var savedMap:Map<String, Dynamic> = FlxG.save.data.gameplaySettings;
+			for (name => value in savedMap)
+			{
+				gameplaySettings.set(name, value);
+			}
+		}
+
 		if(FlxG.save.data.gameplaySettings != null)
 		{
 			var savedMap:Map<String, Dynamic> = FlxG.save.data.gameplaySettings;

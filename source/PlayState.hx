@@ -1353,6 +1353,10 @@ class PlayState extends MusicBeatState
 			}
 		}
 		CustomFadeTransition.nextCamera = camOther;
+		if (ClientPrefs.videoMode) {
+			camHUD.visible = false;
+			instance.cpuControlled = true;
+		}
 	}
 
 	function set_songSpeed(value:Float):Float
