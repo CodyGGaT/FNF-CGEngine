@@ -3,6 +3,10 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import PlayState;
+#if sys
+import sys.FileSystem;
+#end
 
 using StringTools;
 
@@ -30,12 +34,35 @@ class StrumNote extends FlxSprite
 		colorSwap = new ColorSwap();
 		shader = colorSwap.shader;
 		noteData = leData;
+
 		this.player = player;
 		this.noteData = leData;
 		super(x, y);
 
 		var skin:String = 'NOTE_assets';
-		if(PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
+		if (PlayState.SONG.arrowSkin == null || PlayState.SONG.arrowSkin.length <= 1) {
+			if(ClientPrefs.noteSkinSettings == 'Clasic') {
+				skin = 'NOTE_assets';
+			} else if (ClientPrefs.noteSkinSettings == 'Circle') {
+				skin = 'NOTE_assets_circle';
+			} else {
+				skin = 'NOTE_assets';// for preventing crashes
+			}
+		}
+		if (PlayState.SONG.arrowSkin != null && PlayState.SONG.arrowSkin.length > 1) skin = PlayState.SONG.arrowSkin;
+
+		#if sys
+		if (this.player == 1) {
+			if (FileSystem.exists(Paths.modsImages("NOTE_" + PlayState.SONG.player1 + '_assets'))) {
+				skin = "NOTE_" + PlayState.SONG.player1 + '_assets';
+			}
+		} else {
+			if (FileSystem.exists(Paths.modsImages("NOTE_" + PlayState.SONG.player2 + '_assets'))) {
+				skin = "NOTE_" + PlayState.SONG.player2 + '_assets';
+			}
+		}
+		#end
+		//trace(PlayState.SONG.arrowSkin); мама я в ютубе
 		texture = skin; //Load texture and anims
 
 		scrollFactor.set();
@@ -60,7 +87,7 @@ class StrumNote extends FlxSprite
 			animation.add('red', [7]);
 			animation.add('blue', [5]);
 			animation.add('purple', [4]);
-			switch (Math.abs(noteData))
+			switch (Math.abs(noteData) % 4)
 			{
 				case 0:
 					animation.add('static', [0]);
@@ -91,7 +118,7 @@ class StrumNote extends FlxSprite
 			antialiasing = ClientPrefs.globalAntialiasing;
 			setGraphicSize(Std.int(width * 0.7));
 
-			switch (Math.abs(noteData))
+			switch (Math.abs(noteData) % 4)
 			{
 				case 0:
 					animation.addByPrefix('static', 'arrowLEFT');
@@ -153,9 +180,12 @@ class StrumNote extends FlxSprite
 			colorSwap.saturation = 0;
 			colorSwap.brightness = 0;
 		} else {
-			colorSwap.hue = ClientPrefs.arrowHSV[noteData % 4][0] / 360;
-			colorSwap.saturation = ClientPrefs.arrowHSV[noteData % 4][1] / 100;
-			colorSwap.brightness = ClientPrefs.arrowHSV[noteData % 4][2] / 100;
+			if (noteData > -1 && noteData < ClientPrefs.arrowHSV.length)
+			{
+				colorSwap.hue = ClientPrefs.arrowHSV[noteData][0] / 360;
+				colorSwap.saturation = ClientPrefs.arrowHSV[noteData][1] / 100;
+				colorSwap.brightness = ClientPrefs.arrowHSV[noteData][2] / 100;
+			}
 
 			if(animation.curAnim.name == 'confirm' && !PlayState.isPixelStage) {
 				centerOrigin();
