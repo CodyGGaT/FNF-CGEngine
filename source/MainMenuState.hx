@@ -26,7 +26,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var psychEngineVersion:String = '0.4'; //This is also used for DiscÑord RPC
+	public static var psychEngineVersion:String = '0.4.1'; //This is also used for DiscÑord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<MenuObject>;
