@@ -120,7 +120,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'noteSkinSettings',
 			'string',
 			'Classic',
-			['Classic', 'Circle']);
+			['Classic', 'Circle', 'Stepmania']);
 		addOption(option);
 
 		var option:Option = new Option('Pause Screen Song:',

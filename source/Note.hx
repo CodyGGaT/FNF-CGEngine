@@ -320,6 +320,8 @@ class Note extends FlxSprite
 						skin = 'NOTE_assets';
 					} else if (ClientPrefs.noteSkinSettings == 'Circle') {
 						skin = 'NOTE_assets_circle';
+					} else if (ClientPrefs.noteSkinSettings == 'Stepmania') {
+						skin = 'NOTE_assets_stepmania';
 					} else {
 						skin = 'NOTE_assets';// for preventing crashes
 					}
