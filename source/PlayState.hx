@@ -299,6 +299,8 @@ class PlayState extends MusicBeatState
 
 	var precacheList:Map<String, String> = new Map<String, String>();
 
+	var hudIsSwapped:Bool = false;
+
 	override public function create()
 	{
 		Paths.clearStoredMemory();
@@ -994,7 +996,7 @@ class PlayState extends MusicBeatState
 
 		var showTime:Bool = (ClientPrefs.timeBarType != 'Disabled');
 		timeTxt = new FlxText(STRUM_X + (FlxG.width / 2) - 248, 19, 400, "", 32);
-		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.setFormat(Paths.font("funkin.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		timeTxt.scrollFactor.set();
 		timeTxt.alpha = 0;
 		timeTxt.borderSize = 2;
@@ -1166,14 +1168,14 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		scoreTxt.setFormat(Paths.font("funkin.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		scoreTxt.borderSize = 1.25;
 		scoreTxt.visible = !ClientPrefs.hideHud;
 		add(scoreTxt);
 
 		botplayTxt = new FlxText(400, timeBarBG.y + 55, FlxG.width - 800, "", 32);
-		botplayTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		botplayTxt.setFormat(Paths.font("funkin.ttf"), 32, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		botplayTxt.scrollFactor.set();
 		botplayTxt.borderSize = 1.25;
 		botplayTxt.visible = cpuControlled;
@@ -2883,7 +2885,7 @@ class PlayState extends MusicBeatState
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
 
-		scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses + ' | Rating: ' + ratingName;
+		scoreTxt.text = 'Score: ' + songScore + ' | Combo Breaks: ' + songMisses + ' | Rating: ' + ratingName;
 		if(ratingName != '?')
 			scoreTxt.text += ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
 
@@ -3599,6 +3601,41 @@ class PlayState extends MusicBeatState
 
 			case 'BG Freaks Expression':
 				if(bgGirls != null) bgGirls.swapDanceType();
+
+			case 'Swap Hud':
+                if (!hudIsSwapped) {
+                    playerStrums.forEach(function(spr:FlxSprite) {
+                        FlxTween.tween(spr, {x: spr.x - 650}, 0.1, {
+                            ease: FlxEase.circOut
+                        });
+                    });
+                    opponentStrums.forEach(function(spr:FlxSprite) {
+                        FlxTween.tween(spr, {x: spr.x + 650}, 0.1, {
+                            ease: FlxEase.circOut
+                        });
+                    });
+                    //iconP1.changeIcon(dad.healthIcon);
+                    //iconP2.changeIcon(boyfriend.healthIcon);
+                    hudIsSwapped = true;
+                    //reloadHealthBarColors(false);
+                    //recalculateIconAnimations();
+                } else {
+                    playerStrums.forEach(function(spr:FlxSprite) {
+                        FlxTween.tween(spr, {x: spr.x + 650}, 0.1, {
+                            ease: FlxEase.circOut
+                        });
+                    });
+                    opponentStrums.forEach(function(spr:FlxSprite) {
+                        FlxTween.tween(spr, {x: spr.x - 650}, 0.1, {
+                            ease: FlxEase.circOut
+                        });
+                    });
+                    //iconP2.changeIcon(dad.healthIcon);
+                    //iconP1.changeIcon(boyfriend.healthIcon);
+                    hudIsSwapped = false;
+                    //reloadHealthBarColors(false);
+                    //recalculateIconAnimations();
+                }
 
 			case 'Change Scroll Speed':
 				if (songSpeedType == "constant")
