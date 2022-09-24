@@ -109,7 +109,7 @@ class TitleState extends MusicBeatState
 		#if CHECK_FOR_UPDATES
 		if(!closedState) {
 			trace('checking for update');
-			var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
+			var http = new haxe.Http("https://raw.githubusercontent.com/CodyGGaT/CG-Engine/main/gitVersion.txt");
 			
 			http.onData = function (data:String)
 			{
@@ -277,8 +277,8 @@ class TitleState extends MusicBeatState
 		}
 		gfDance.antialiasing = ClientPrefs.globalAntialiasing;
 
-		bg = new FlxSprite().loadGraphic(Paths.image('titleMenu/leTitleBG'));
-		bg.setGraphicSize(Std.int(bg.width * 1.1)); //replace the leTitleBG with your image
+		bg = new FlxSprite().loadGraphic(Paths.image('titleMenu/TitleBG'));
+		bg.setGraphicSize(Std.int(bg.width * 1.1)); //replace the TitleBG with your image
 		bg.screenCenter(); //my image isnt big enough so i gotta make it bigger if yours is enough then dont make that
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 

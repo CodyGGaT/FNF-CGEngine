@@ -1,59 +1,59 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
+			"loop": false,
 			"fps": 24,
-			"name": "Mom Idle",
-			"indices": []
+			"anim": "idle",
+			"indices": [],
+			"name": "Mom Idle"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				250,
 				-23
 			],
-			"anim": "singLEFT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mom Left Pose",
-			"indices": []
+			"anim": "singLEFT",
+			"indices": [],
+			"name": "Mom Left Pose"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				10,
 				-60
 			],
-			"anim": "singRIGHT",
+			"loop": false,
 			"fps": 24,
-			"name": "Mom Pose Left",
-			"indices": []
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "Mom Pose Left"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				20,
 				-160
 			],
-			"anim": "singDOWN",
+			"loop": false,
 			"fps": 24,
-			"name": "MOM DOWN POSE",
-			"indices": []
+			"anim": "singDOWN",
+			"indices": [],
+			"name": "MOM DOWN POSE"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				14,
 				71
 			],
-			"anim": "singUP",
+			"loop": false,
 			"fps": 24,
-			"name": "Mom Up Pose",
-			"indices": []
+			"anim": "singUP",
+			"indices": [],
+			"name": "Mom Up Pose"
 		}
 	],
 	"no_antialiasing": false,
@@ -62,6 +62,7 @@
 		0,
 		0
 	],
+	"hasVictory": false,
 	"healthicon": "mom",
 	"flip_x": false,
 	"healthbar_colors": [

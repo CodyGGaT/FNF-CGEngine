@@ -60,7 +60,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			'colorblindMode',
 			'string',
 			'None', 
-			['None', 'Deuteranopia', 'Protanopia', 'Tritanopia']);
+			['None', 'Deuteranopia', 'Protanopia', 'Tritanopia', 'Virtual Boy', 'Gameboy', 'Downer', 'Grayscale', 'Invert']);
 		option.onChange = ColorblindFilters.applyFiltersOnGame;
 		addOption(option);
 		
@@ -114,6 +114,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 		option.onChange = onChangeFPSCounter;
 		#end
+
+		var option:Option = new Option('Now Playing Bar',
+			'Dont Turn on Right Now, it Dont Work',
+			'songbar',
+			'bool',
+			false);
+		addOption(option);
 		
 		var option:Option = new Option('Note Skin',
 			"What note skin do you prefer for playing?",

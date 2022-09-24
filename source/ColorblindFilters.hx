@@ -42,6 +42,56 @@ class ColorblindFilters {
 				];
 
 				{filter: new ColorMatrixFilter(matrix)}
+			},
+			"Virtual Boy" => {
+				var matrix:Array<Float> = [
+					0.9, 0, 0, 0, 0,
+					0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0,
+					0, 0, 0, 1, 0,
+				];
+
+				{filter: new ColorMatrixFilter(matrix)}
+			},
+			"Gameboy" => {
+				var matrix:Array<Float> = [
+					0, 0, 0, 0, 0,
+					0, 1.5, 0, 0, 0,
+					0, 0, 0, 0, 0,
+					0, 0, 0, 1, 0,
+				];
+
+				{filter: new ColorMatrixFilter(matrix)}
+			},
+			"Downer" => {
+				var matrix:Array<Float> = [
+					0, 0, 0, 0, 0,
+					0, 0, 0, 0, 0,
+					0, 0, 1.5, 0, 0,
+					0, 0, 0, 1, 0,
+				];
+
+				{filter: new ColorMatrixFilter(matrix)}
+			},
+			"Grayscale" => {
+				var matrix:Array<Float> = [
+					.3, .3, .3, 0, 0,
+					.3, .3, .3, 0, 0,
+					.3, .3, .3, 0, 0,
+					0, 0, 0, 1, 0,
+				];
+
+				{filter: new ColorMatrixFilter(matrix)}
+			},
+			"Invert" => {
+				var matrix:Array<Float> = [
+					-1, 0, 0, 0, 255,
+					0, -1, 0, 0, 255,
+					0, 0, -1, 0, 255,
+					0, 0, 0, 1, 0,
+				];
+
+				{filter: new ColorMatrixFilter(matrix)}
 			}
     ];
 
