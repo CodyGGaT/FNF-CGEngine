@@ -115,13 +115,13 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.onChange = onChangeFPSCounter;
 		#end
 
-		var option:Option = new Option('Now Playing Bar',
-			'Dont Turn on Right Now, it Dont Work',
-			'songbar',
+		var option:Option = new Option('Rainbow Notes',
+			'Why not?\n(Constantly changes note color.)',
+			'rainbowNotes',
 			'bool',
-			false);
+			true);
 		addOption(option);
-		
+
 		var option:Option = new Option('Note Skin',
 			"What note skin do you prefer for playing?",
 			'noteSkinSettings',

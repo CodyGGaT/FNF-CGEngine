@@ -2728,6 +2728,7 @@ class PlayState extends MusicBeatState
 	var startedCountdown:Bool = false;
 	var canPause:Bool = true;
 	var limoSpeed:Float = 0;
+	var rainbowNoteHue:Int = 0;
 
 	override public function update(elapsed:Float)
 	{
@@ -2736,6 +2737,24 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 		callOnLuas('onUpdate', [elapsed]);
+
+		if (ClientPrefs.rainbowNotes)
+			{
+				rainbowNoteHue = (rainbowNoteHue += 1) % 360;
+				notes.forEachAlive(function(note:Note)
+				{
+					note.colorSwap.hue = rainbowNoteHue / 360;
+					note.noteSplashHue = rainbowNoteHue / 360;
+				});
+	
+				strumLineNotes.forEachAlive((strum) ->
+				{
+					@:privateAccess
+					{
+						strum.colorSwap.hue = rainbowNoteHue / 360;
+					}
+				});
+			}
 
 		switch (curStage)
 		{
