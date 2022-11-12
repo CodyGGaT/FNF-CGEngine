@@ -570,7 +570,7 @@ class TitleState extends MusicBeatState
 			{
 				case 1:
 					#if PSYCH_WATERMARKS
-					createCoolText(['cggat', 'moni rebooted', 'GaMeRPrO']);
+					createCoolText(['cggat', 'AphelionHusband', 'GaMeRPrO']);
 					#end
 				// credTextShit.visible = true;
 				case 3:

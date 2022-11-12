@@ -53,7 +53,7 @@ class Cache extends MusicBeatState
 
 		shitz = new FlxText(12, 12, 0, "Loading...", 12);
 		shitz.scrollFactor.set();
-		shitz.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		shitz.setFormat(Paths.font("funkin.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(shitz);
 
 		#if cpp
