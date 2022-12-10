@@ -1154,13 +1154,13 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 		healthBarBG.sprTracker = healthBar;
 
-		iconP1 = new HealthIcon(boyfriend.healthIcon, true, boyfriend.hasVictory);
+		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.hideHud;
 		iconP1.alpha = ClientPrefs.healthBarAlpha;
 		add(iconP1);
 
-		iconP2 = new HealthIcon(dad.healthIcon, false, dad.hasVictory);
+		iconP2 = new HealthIcon(dad.healthIcon, false);
 		iconP2.y = healthBar.y - 75;
 		iconP2.visible = !ClientPrefs.hideHud;
 		iconP2.alpha = ClientPrefs.healthBarAlpha;
@@ -2963,25 +2963,37 @@ class PlayState extends MusicBeatState
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
 
+		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
+		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
+
 		if (health > 2)
 			health = 2;
-		var ret:Dynamic = callOnLuas('onIconUpdate', ["player"]);
-		if (ret != FunkinLua.Function_Stop) {
+
+		if (iconP1.animation.frames == 3) {
 			if (healthBar.percent < 20)
 				iconP1.animation.curAnim.curFrame = 1;
-			else if (healthBar.percent > 80 && boyfriend.hasVictory)
+			else if (healthBar.percent >80)
 				iconP1.animation.curAnim.curFrame = 2;
 			else
 				iconP1.animation.curAnim.curFrame = 0;
+		} 
+		else {
+			if (healthBar.percent < 20)
+				iconP1.animation.curAnim.curFrame = 1;
+			else
+				iconP1.animation.curAnim.curFrame = 0;
 		}
-
-		var ret:Dynamic = callOnLuas('onIconUpdate', ["opponent"]);
-		if (ret != FunkinLua.Function_Stop) {
+		if (iconP2.animation.frames == 3) {
 			if (healthBar.percent > 80)
 				iconP2.animation.curAnim.curFrame = 1;
-			else if (healthBar.percent < 20 && dad.hasVictory)
+			else if (healthBar.percent < 20)
 				iconP2.animation.curAnim.curFrame = 2;
-			else
+			else 
+				iconP2.animation.curAnim.curFrame = 0;
+		} else {
+			if (healthBar.percent > 80)
+				iconP2.animation.curAnim.curFrame = 1;
+			else 
 				iconP2.animation.curAnim.curFrame = 0;
 		}
 
@@ -3581,7 +3593,6 @@ class PlayState extends MusicBeatState
 							boyfriend.alpha = 0.00001;
 							boyfriend = boyfriendMap.get(value2);
 							boyfriend.alpha = lastAlpha;
-							iconP1.changeIcon(boyfriend.healthIcon, boyfriend.hasVictory);
 						}
 						setOnLuas('boyfriendName', boyfriend.curCharacter);
 
@@ -3603,7 +3614,6 @@ class PlayState extends MusicBeatState
 								gf.visible = false;
 							}
 							dad.alpha = lastAlpha;
-							iconP2.changeIcon(dad.healthIcon, dad.hasVictory);
 						}
 						setOnLuas('dadName', dad.curCharacter);
 

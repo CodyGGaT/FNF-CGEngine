@@ -83,7 +83,6 @@ class CreditsState extends MusicBeatState
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
 			['CG Engine Team'],
 			['CGGaT',				'cggat',			'Main Programmer of CG Engine',								'',										'444444'],
-			['MoniRebooted',		'moni',				'Co-Programmer of CG Engine',								'',										'C30085'],
 			['GaMeRPrO',			'gamerpro',			'Beta Tester',												'',										'd35532'],
 			[''],
 			["Funkin' Crew"],

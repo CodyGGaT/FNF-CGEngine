@@ -120,7 +120,7 @@ class CharacterEditorState extends MusicBeatState
 		add(healthBarBG);
 		healthBarBG.cameras = [camHUD];
 
-		leHealthIcon = new HealthIcon(char.healthIcon, false, false);
+		leHealthIcon = new HealthIcon(char.healthIcon, false);
 		leHealthIcon.y = FlxG.height - 150;
 		add(leHealthIcon);
 		leHealthIcon.cameras = [camHUD];
@@ -570,7 +570,7 @@ class CharacterEditorState extends MusicBeatState
 		hasVictoryCheckBox.callback = function() {
 			char.hasVictory = hasVictoryCheckBox.checked;
 			ghostChar.hasVictory = char.hasVictory;
-			leHealthIcon.changeIcon(healthIconInputText.text, char.hasVictory);
+			leHealthIcon.changeIcon(healthIconInputText.text);
 		};
 
 		positionXStepper = new FlxUINumericStepper(flipXCheckBox.x + 110, flipXCheckBox.y, 10, char.positionArray[0], -9000, 9000, 0);
@@ -771,7 +771,7 @@ class CharacterEditorState extends MusicBeatState
 	override function getEvent(id:String, sender:Dynamic, data:Dynamic, ?params:Array<Dynamic>) {
 		if(id == FlxUIInputText.CHANGE_EVENT && (sender is FlxUIInputText)) {
 			if(sender == healthIconInputText) {
-				leHealthIcon.changeIcon(healthIconInputText.text, char.hasVictory);
+				leHealthIcon.changeIcon(healthIconInputText.text);
 				char.healthIcon = healthIconInputText.text;
 				updatePresence();
 			}
@@ -999,7 +999,7 @@ class CharacterEditorState extends MusicBeatState
 			flipXCheckBox.checked = char.originalFlipX;
 			noAntialiasingCheckBox.checked = char.noAntialiasing;
 			resetHealthBarColor();
-			leHealthIcon.changeIcon(healthIconInputText.text, char.hasVictory);
+			leHealthIcon.changeIcon(healthIconInputText.text);
 			positionXStepper.value = char.positionArray[0];
 			positionYStepper.value = char.positionArray[1];
 			positionCameraXStepper.value = char.cameraPosition[0];

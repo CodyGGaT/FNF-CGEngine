@@ -17,7 +17,7 @@ class ClientPrefs {
 	public static var globalAntialiasing:Bool = true;
 	public static var noteSplashes:Bool = true;
 	public static var lowQuality:Bool = false;
-	public static var framerate:Int = 60;
+	public static var framerate:Int = 120;
 	public static var cursing:Bool = true;
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
@@ -254,7 +254,7 @@ class ClientPrefs {
 		if(FlxG.save.data.pauseMusic != null) {
 			pauseMusic = FlxG.save.data.pauseMusic;
 		}
-		if(FlxG.save.data.pauseMusic != null) {
+		if(FlxG.save.data.noteSkinSettings != null) {
 			noteSkinSettings = FlxG.save.data.noteSkinSettings;
 		}
 		if(FlxG.save.data.gameplaySettings != null)

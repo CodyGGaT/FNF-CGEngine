@@ -130,7 +130,7 @@ class FreeplayState extends MusicBeatState
 			}
 
 			Paths.currentModDirectory = songs[i].folder;
-			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter, false, songs[i].songCharHasVictory);
+			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 			icon.sprTracker = songText;
 
 			// using a FlxGroup is too much fuss!
@@ -460,9 +460,11 @@ class FreeplayState extends MusicBeatState
 		for (i in 0...iconArray.length)
 		{
 			iconArray[i].alpha = 0.6;
+			iconArray[i].animation.curAnim.curFrame = 0;
 		}
 
 		iconArray[curSelected].alpha = 1;
+		iconArray[curSelected].animation.curAnim.curFrame = 2;
 
 		for (item in grpSongs.members)
 		{

@@ -115,7 +115,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.onChange = onChangeFPSCounter;
 		#end
 
-		var option:Option = new Option('Note Skin',
+		var option:Option = new Option('Note Skin:',
 			"What note skin do you prefer for playing?",
 			'noteSkinSettings',
 			'string',

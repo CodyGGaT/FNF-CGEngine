@@ -24,8 +24,8 @@ class OutdatedState extends MusicBeatState
 		add(bg);
 
 		warnText = new FlxText(0, 0, FlxG.width,
-			"Hey dude, looks like you're running an   \n
-			outdated version of CG Engine (" + MainMenuState.psychEngineVersion + "),\n
+			"Hey Bro, looks like you're running an   \n
+			outdated version of CG Engine (" + MainMenuState.cgEngineVersion + "),\n
 			please update to " + TitleState.updateVersion + "!\n
 			Press ESCAPE to proceed anyway.\n
 			\n
