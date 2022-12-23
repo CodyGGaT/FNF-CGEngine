@@ -25,7 +25,7 @@ using StringTools;
 
 class MainMenuState extends MusicBeatState
 {
-	public static var cgEngineVersion:String = '0.5.3'; //This is also used for Discord RPC
+	public static var cgEngineVersion:String = '0.6'; //This is also used for Discord RPC
 	public static var curSelected:Int = 0;
 
 	var menuItems:FlxTypedGroup<FlxSprite>;
@@ -57,7 +57,7 @@ class MainMenuState extends MusicBeatState
 
 		#if desktop
 		// Updating Discord Rich Presence
-		DiscordClient.changePresence("In the Menus", null);
+		DiscordClient.changePresence("Main Menu", null);
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
@@ -166,7 +166,7 @@ class MainMenuState extends MusicBeatState
 			char.animation.addByPrefix('idleR', 'pico-menu idle', 24, true);//on 'idle normal' change it to your xml one
 			char.animation.play('idleR');//you can rename the anim however you want to
 			char.scrollFactor.set();
-			FlxG.sound.play(Paths.sound('appear'), 2);
+			FlxG.sound.play(Paths.sound('bullet'), 2);
 			char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			add(char);
@@ -177,7 +177,6 @@ class MainMenuState extends MusicBeatState
 			char.animation.addByPrefix('idleR', 'bf-menu idle', 24, true);//on 'idle normal' change it to your xml one
 			char.animation.play('idleR');//you can rename the anim however you want to
 			char.scrollFactor.set();
-			FlxG.sound.play(Paths.sound('appear'), 2);
 			char.flipX = false;//this is for flipping it to look left instead of right you can make it however you want
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			add(char);
@@ -200,7 +199,6 @@ class MainMenuState extends MusicBeatState
 			char.scrollFactor.set();
 			char.flipX = true;
 			char.antialiasing = ClientPrefs.globalAntialiasing;
-			FlxG.sound.play(Paths.sound('miaou'), 2);
 			add(char);
 		
 			case 5:
@@ -209,6 +207,7 @@ class MainMenuState extends MusicBeatState
 			char.animation.addByPrefix('idleRD', 'spooky-menu idle', 24, true);
 			char.animation.play('idleRD');
 			char.scrollFactor.set();
+			FlxG.sound.play(Paths.sound('yeah'), 2);
 			char.flipX = true;
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			add(char);
@@ -219,7 +218,7 @@ class MainMenuState extends MusicBeatState
 			char.animation.addByPrefix('idleR', 'idle', 24, true);
 			char.animation.play('idleR');
 			char.scrollFactor.set();
-			FlxG.sound.play(Paths.sound('appear'), 2);
+			FlxG.sound.play(Paths.sound('ugh'), 2);
 			char.flipX = false;
 			char.antialiasing = ClientPrefs.globalAntialiasing;
 			add(char);

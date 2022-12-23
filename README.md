@@ -1,33 +1,54 @@
-# Friday Night Funkin' - CG Engine
-intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
+# Friday Night Funkin' - Psych Engine
+Engine originally used on [Mind Games Mod](https://gamebanana.com/mods/301107), intended to be a fix for the vanilla version's many issues while keeping the casual play aspect of it. Also aiming to be an easier alternative to newbie coders.
 
 ## Installation:
 You must have [the most up-to-date version of Haxe](https://haxe.org/download/), seriously, stop using 4.1.5, it misses some stuff.
 
 Follow a Friday Night Funkin' source code compilation tutorial, after this you will need to install LuaJIT.
 
-To install LuaJIT do this: `haxelib git linc_luajit https://github.com/AndreiRudenko/linc_luajit ` on a Command prompt/PowerShell
+To install LuaJIT do this: `haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit` on a Command prompt/PowerShell
 
 ...Or if you don't want your mod to be able to run .lua scripts, delete the "LUA_ALLOWED" line on Project.xml
 
+
+If you get an error about StatePointer when using Lua, run `haxelib remove linc_luajit` into Command Prompt/PowerShell, then re-install linc_luajit.
+
+If you want video support on your mod, simply do `haxelib install hxCodec` on a Command prompt/PowerShell
+
+otherwise, you can delete the "VIDEOS_ALLOWED" Line on Project.xml
+
 ## Credits:
-* CGGaT - Coding
-* MoniRebooted
+* Shadow Mario - Programmer
+* RiverOaken - Artist
+* Yoshubs - Assistant Programmer
+
+### Special Thanks
+* bbpanzu - Ex-Programmer
+* shubs - New Input System
+* SqirraRNG - Crash Handler and Base code for Chart Editor's Waveform
+* KadeDev - Fixed some cool stuff on Chart Editor and other PRs
+* iFlicky - Composer of Psync and Tea Time, also made the Dialogue Sounds
+* PolybiusProxy - .MP4 Video Loader Library (hxCodec)
+* Keoiki - Note Splash Animations
+* Smokey - Sprite Atlas Support
+* Nebula the Zorua - LUA JIT Fork and some Lua reworks
+_____________________________________
 
 # Features
 
 ## Attractive animated dialogue boxes:
 
+![](https://user-images.githubusercontent.com/44785097/127706669-71cd5cdb-5c2a-4ecc-871b-98a276ae8070.gif)
 
 
 ## Mod Support
 * Probably one of the main points of this engine, you can code in .lua files outside of the source code, making your own weeks without even messing with the source!
-* Comes with a Mod Organizing/Disabling Menu. 
+* Comes with a Mod Organizing/Disabling Menu.
 
 
 ## Atleast one change to every week:
 ### Week 1:
-  * New Dad Left sing sprite 
+  * New Dad Left sing sprite
   * Unused stage lights are now used
 ### Week 2:
   * Both BF and Skid & Pump does "Hey!" animations
@@ -65,6 +86,7 @@ To install LuaJIT do this: `haxelib git linc_luajit https://github.com/AndreiRud
 * All menu characters are now in individual spritesheets, makes modding it easier.
 
 ## Credits menu
+![Screenshot_1](https://user-images.githubusercontent.com/44785097/144632635-f263fb22-b879-4d6b-96d6-865e9562b907.png)
 * You can add a head icon, name, description and a Redirect link for when the player presses Enter while the item is currently selected.
 
 ## Awards/Achievements
@@ -80,5 +102,3 @@ To install LuaJIT do this: `haxelib git linc_luajit https://github.com/AndreiRud
 * Some stuff based on Week 7's changes has been put in (Background colors on Freeplay, Note splashes)
 * You can reset your Score on Freeplay/Story Mode by pressing Reset button.
 * You can listen to a song or adjust Scroll Speed/Damage taken/etc. on Freeplay by pressing Space.
-* No Botplay text when botplay is enabled
-* in a later update winning icons, mechanics, and mirror mode will be added

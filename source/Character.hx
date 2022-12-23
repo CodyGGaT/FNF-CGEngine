@@ -26,7 +26,7 @@ typedef CharacterFile = {
 	var scale:Float;
 	var sing_duration:Float;
 	var healthicon:String;
-	var hasVictory:Bool;
+
 	var position:Array<Float>;
 	var camera_position:Array<Float>;
 
@@ -57,7 +57,6 @@ class Character extends FlxSprite
 	public var heyTimer:Float = 0;
 	public var specialAnim:Bool = false;
 	public var animationNotes:Array<Dynamic> = [];
-	public var hasVictory:Bool = false;
 	public var stunned:Bool = false;
 	public var singDuration:Float = 4; //Multiplier of how long a character holds the sing pose
 	public var idleSuffix:String = '';
@@ -179,7 +178,6 @@ class Character extends FlxSprite
 				cameraPosition = json.camera_position;
 
 				healthIcon = json.healthicon;
-				hasVictory = json.hasVictory;
 				singDuration = json.sing_duration;
 				flipX = !!json.flip_x;
 				if(json.no_antialiasing) {
@@ -236,6 +234,7 @@ class Character extends FlxSprite
 					animation.getByName('singRIGHT').frames = animation.getByName('singLEFT').frames;
 					animation.getByName('singLEFT').frames = oldRight;
 				}
+
 				// IF THEY HAVE MISS ANIMATIONS??
 				if (animation.getByName('singLEFTmiss') != null && animation.getByName('singRIGHTmiss') != null)
 				{
@@ -261,7 +260,7 @@ class Character extends FlxSprite
 		{
 			if(heyTimer > 0)
 			{
-				heyTimer -= elapsed;
+				heyTimer -= elapsed * PlayState.instance.playbackRate;
 				if(heyTimer <= 0)
 				{
 					if(specialAnim && animation.curAnim.name == 'hey' || animation.curAnim.name == 'cheer')
@@ -299,7 +298,7 @@ class Character extends FlxSprite
 					holdTimer += elapsed;
 				}
 
-				if (holdTimer >= Conductor.stepCrochet * 0.0011 * singDuration)
+				if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * singDuration)
 				{
 					dance();
 					holdTimer = 0;
